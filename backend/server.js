@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost/ProjetFinalJS', { useNewUrlParser: true })
 //////////////////image
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "uploads/")
+        cb(null, "public/")
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + "-" + file.originalname)
@@ -116,6 +116,17 @@ db.once('open', function () {
 // mongodb.MongoClient.connect(mongoURL,{useNewUrlParser: true},{useUnifiedTopology: true},(err,client)=>{
 //     assert.equal(err,null,'connection err')
 //     const db = client.db(data)
+
+app.post('/uploadFiles', upload.single('file'), function(req, res) {
+ 
+/*     if (done == true) {
+        console.log(req.files);
+        res.end("File uploaded");
+    } */
+    console.log(req);
+    res.end("File uploaded");
+});
+
 
     app.post("/ajouteEvenement", upload.single('img'), function (req, res, next) {
         var item = {
@@ -498,6 +509,8 @@ db.once('open', function () {
     })
 
 })
+
+app.use(express.static(__dirname + 'public')); //Serves resources from public folder
 
 
 app.listen(4444,(err)=>{
