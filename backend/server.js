@@ -510,8 +510,7 @@ app.post('/uploadFiles', upload.single('file'), function(req, res) {
 
 })
 
-app.use(express.static(__dirname + 'public')); //Serves resources from public folder
-
+app.use(express.static('public'));
 
 app.listen(4444,(err)=>{
     if(err)
