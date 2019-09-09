@@ -4,10 +4,12 @@ import axios from 'axios'
 import Image from '../../upload.js'
 class AjouteEntreprise extends Component {
     state = { 
+        cin:"",
         Nom:"",
         Email:"",
         Domaine:"",
-        Description:""
+        Description:"",
+        img:""
     } 
     handleChange = (event)=>{
         this.setState({
@@ -16,8 +18,8 @@ class AjouteEntreprise extends Component {
     }
     add= (event)=>{
         event.preventDefault();
-        return (this.state.Nom.length == 0 && this.state.Email.length == 0 && this.state.Domaine.length == 0 && this.state.Description.length == 0) ? {} 
-            : axios.post('/ajouteEntreprise', this.state).then(() => (this.props.Ajoute({ ...this.state }),  this.setState({ Nom: '', Email: '', Domaine: '', heure_debut: '', Description: ''})))
+        return (this.state.img.length == 0 && this.state.Nom.length == 0 && this.state.cin.length == 0 && this.state.Email.length == 0 && this.state.Domaine.length == 0 && this.state.Description.length == 0) ? {} 
+            : axios.post('/ajouteEntreprise', this.state).then(() => (this.props.Ajoute({ ...this.state }), this.setState({ img: "", cin:"", Nom: '', Email: '', Domaine: '', heure_debut: '', Description: ''})))
             .catch((err) => alert(err))
     }
     render() {
@@ -33,7 +35,16 @@ class AjouteEntreprise extends Component {
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="bmd-label-floating">Nom</label>
+                                            <label class="bmd-label-floating">N cin de Responsable</label>
+                                            <input type="text" class="form-control" value={this.state.cin} name="cin" onChange={this.handleChange} />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Nom de l'Entreprise</label>
                                             <input type="text" class="form-control" value={this.state.Nom} name="Nom" onChange={this.handleChange} />
                                         </div>
                                     </div>
@@ -65,6 +76,14 @@ class AjouteEntreprise extends Component {
                                         </div>
                                     </div>
                                 </div> 
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating" >image</label>
+                                            <input type="text" class="form-control" value={this.state.img} name="img" onChange={this.handleChange} />
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">

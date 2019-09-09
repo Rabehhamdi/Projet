@@ -6,7 +6,7 @@ import Footer from './footer'
 import Menu from './menu'
 class EmploiTemp extends Component {
     componentDidMount = () => {
-        axios.get("/UPDATEYourEmploit")
+        axios.get("/afiicheEmploidetemp")
             .then(res => {
                 this.props.update(res.data)
 
@@ -25,7 +25,7 @@ class EmploiTemp extends Component {
                                 <h3 class="panel-title">Emploi De Temp</h3>
                         </div>
                         <div class="panel-body">
-                                <iframe src={dataemploit} frameborder="0" height="500px" width="100%">
+                                <iframe src={dataemploit[0].pdf} frameborder="0" height="500px" width="100%">
 
                                 </iframe>
                         </div>
@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         update: (update) => {
             dispatch({
-                type: 'UPDATEEntreprise',
+                type: 'UPDATEYourEmploit',
                 update
             })
         }

@@ -23,7 +23,7 @@ class Departement extends Component {
                                 <div class="section-title-wrapper">
                                     <div class="section-title">
                                         <h3>Liste Departement</h3>
-                                        <p>There are many variations of passages of Lorem Ipsum</p>
+                                        <p></p>
                                     </div>
                                 </div>
                             </div>
@@ -31,8 +31,7 @@ class Departement extends Component {
                         <div class="row">
                             {dataDepartement.map((el, index) => <ItemDepartement el={el} key={index}/>)}
                         <div class="col-md-12 col-sm-12 text-center">
-                                <a href="#" class="button-default button-large">Browse All Courses <i class="zmdi zmdi-chevron-right"></i></a>
-                            </div>
+                                  </div>
                         </div>
                     </div>
                 </div>

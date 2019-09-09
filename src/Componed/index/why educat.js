@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 class Why_educat extends Component {
     componentDidMount = () => {
         axios.get("/afiicheAboutMe")
@@ -20,8 +21,12 @@ class Why_educat extends Component {
                             <div class="col-lg-8 col-md-12">
                                 <div class="about-container">
                                     <h3>WHY EDUCAT ?</h3>
-                                    <p>{data[0].about}</p>
-                                    <a class="button-default" href="#">Learn Now</a>
+                                    <p>{data[0].aboutMe}</p>
+                                    <a class="button-default" href="#">
+                                        <Link to='/About'>
+                                            ABOUT US
+                                        </Link>
+                                    </a>
                                 </div>
                             </div>
                         </div>

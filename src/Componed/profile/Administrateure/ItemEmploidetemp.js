@@ -11,11 +11,9 @@ class ItemActualite extends Component {
         return (
             <section>
                 <tr>
-                    <td> 
-                        {this.props.el.niveaux}
-                    </td>  
+                      
                     <td>
-                        <iframe src={this.props.el.pdf} frameborder="0" height="500px" width="100%"></iframe>
+                        <iframe src={this.props.el.pdf} frameborder="0" height="500px" width="500px"></iframe>
                     </td>   
                     <td> 
                         <button type="button" class="btn btn-danger" onClick={this.delete}>Supprimer</button>

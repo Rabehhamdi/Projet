@@ -5,6 +5,7 @@ import Image from '../../upload.js'
 class AjouteEtudiant extends Component {
     state={
         nom:"",
+        cin:"",
         prenom:"",
         Email:"",
         NumTel:"",
@@ -20,8 +21,8 @@ class AjouteEtudiant extends Component {
     }
     add = (event)=>{
         event.preventDefault();
-        return (this.state.nom.length == 0 && this.state.prenom.length == 0 && this.state.Email.length == 0 && this.state.NumTel.length == 0 && this.state.adresse.length == 0 && this.state.niveau.length == 0 && this.state.description.length == 0 && this.state.date_naissance.length == 0) ? {} 
-            : axios.post('/ajouteetudiant', this.state).then(() => (this.props.Ajoute({ ...this.state }), this.setState({ nom: '', prenom: '', Email: '', NumTel: '', adresse: '', niveau: '', description: '', date_naissance: '' })))
+        return (this.state.nom.length == 0 && this.state.cin.length == 0 && this.state.prenom.length == 0 && this.state.Email.length == 0 && this.state.NumTel.length == 0 && this.state.adresse.length == 0 && this.state.niveau.length == 0 && this.state.description.length == 0 && this.state.date_naissance.length == 0) ? {} 
+            : axios.post('/ajouteetudiant', this.state).then(() => (this.props.Ajoute({ ...this.state }), this.setState({ cin:"",nom: '', prenom: '', Email: '', NumTel: '', adresse: '', niveau: '', description: '', date_naissance: '' })))
         .catch((err) => alert(err))
     }
 
@@ -36,6 +37,14 @@ class AjouteEtudiant extends Component {
                         <div class="panel-body">
                             <div class="card-group">
                                 <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">cin</label>
+                                                <input type="text" class="form-control" value={this.state.cin} name="cin" onChange={this.handelchange} />
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">

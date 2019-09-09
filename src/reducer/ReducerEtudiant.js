@@ -34,18 +34,6 @@ let tabEtudiant = [
         description: "aaaa",
         date_naissance: "aaa",
         niveau: "4 ing"
-    },
-    {
-        _id: "4",
-        img: "http://www.herbeumont.be/macommune/vie-politique/conseil-communal/img/no-profile-image-png.png/image_preview",
-        nom: "Hamdi",
-        prenom: "Rabeh",
-        Email: "rabeh@rabeh.rabeh",
-        NumTel: "002225510",
-        adresse: "aaaa",
-        description: "aaaa",
-        date_naissance: "aaa",
-        niveau: "4 ing"
     }
 
 ]

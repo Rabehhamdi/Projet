@@ -1,9 +1,13 @@
-let about ="xxxxxxxxxxxxxxxxxxx"
-const reducerOboutMe = (state = about, action) => {
+let aboutMe ="xxxxxxxxxxxxxxxxxxx"
+const reducerOboutMe = (state = aboutMe, action) => {
     switch (action.type) {
+        case "AJOUTE_ABOUT":
+            return (
+                state.concat(action.ABOUT)
+            )
         case "EDIT_ABOUT":
             return (
-                state = action.newAbout
+                state = action.aboutMe
             )  
         case 'UPDATEABOUT':
             return (

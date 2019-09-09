@@ -18,7 +18,8 @@ class AjouteActualite extends Component {
     state={
         titre:"",
         date: today,
-        description:""
+        description:"",
+        img:""
     } 
     handleChange =(event)=>{
         this.setState({
@@ -28,7 +29,7 @@ class AjouteActualite extends Component {
     add = (event) => { 
         event.preventDefault();
         return (this.state.titre.length == 0   && this.state.description.length == 0) ? {} 
-            : axios.post('/ajouteactualite', this.state).then(() => (this.props.Ajoute({ ...this.state }),   this.setState({ titre: '' , description: '' })))
+            : axios.post('/ajouteactualite', this.state).then(() => (this.props.Ajoute({ ...this.state }),   this.setState({ titre: '' , description: '',img:"" })))
                 .catch((err) => alert(err))
     }
     render() {
@@ -59,6 +60,17 @@ class AjouteActualite extends Component {
                                             <div class="form-group">
                                                 <label class="bmd-label-floating"> description</label>
                                                 <textarea class="form-control" rows="5" name="description" value={this.state.description} onChange={this.handleChange}></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group"> 
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating"> image</label>
+                                                <input type="text" class="form-control" name="img" value={this.state.img} onChange={this.handleChange} />
                                             </div>
                                         </div>
                                     </div>

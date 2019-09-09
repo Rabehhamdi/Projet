@@ -1,7 +1,30 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import axios from 'axios'
 import ListeActualites from './Liste_Actualites' 
 class Contenu extends Component {
+    componentDidMount = () => {
+        axios.get("/afficheEvenement")
+            .then(res => {
+                this.props.update1(res.data)
+
+            })
+        axios.get("/afficheEtudiant")
+            .then(res => {
+                this.props.update(res.data)
+
+            })
+        axios.get("/afficheActualite")
+            .then(res => {
+                this.props.update3(res.data)
+
+            })
+        axios.get("/afficheEntreprise")
+            .then(res => {
+                this.props.update2(res.data)
+
+            })
+    }
     render() {
         const { nbrEtudiant }=this.props
         const { nbrEntreprise } = this.props
@@ -62,5 +85,32 @@ const mapStateToProps = (state)=>{
         nbrEvenement: state.reducerEvenement
     }
 }
-
-export default connect(mapStateToProps)(Contenu) 
+const mapdispatchToProps = dispatch => {
+    return {
+        update: (update) => {
+            dispatch({
+                type: 'UPDATEEtudiant',
+                update
+            })
+        },
+        update1: (update) => {
+            dispatch({
+                type: 'UPDATE',
+                update
+            })
+        },
+        update2: (update) => {
+            dispatch({
+                type: 'UPDATEEntreprise',
+                update
+            })
+        },
+        update3: (update) => {
+            dispatch({
+                type: 'UPDATEactualite',
+                update
+            })
+        }
+    }
+}
+export default connect(mapStateToProps, mapdispatchToProps)(Contenu) 

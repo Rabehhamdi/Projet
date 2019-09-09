@@ -84,15 +84,13 @@ class ListeEmploidetemp extends Component {
                                         <table class="table">
                                             <thead>
                                                 <tr class="filters"> 
-                                                    <th><input type="text" class="form-control" placeholder="niveaux" disabled /></th> 
-                                                    <th><input type="text" class="form-control" placeholder="pdf" disabled /></th> 
+                                                    <th><input type="text" class="form-control" placeholder="pdf" disabled /></th>  
                                                     <th></th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr> 
-                                                    <th>niveaux</th> 
-                                                    <th>pdf</th> 
+                                                    <th>pdf</th>  
                                                     <th></th>
                                                 </tr>
 

@@ -48,13 +48,7 @@ export default class Heder extends Component {
                                                                 </Link>
                                                             </li>
                                                         <li><Link to='/Departement'>Departement</Link>
-                                                                <ul class="sub-menu">
-                                                                <li>Informatique </li>
-                                                                <li>Energétique </li>
-                                                                <li>Génie Électronique </li>
-                                                                <li>Génie Mécanique </li>
-
-                                                                </ul>
+                                                             
                                                             </li>
                                                              
                                                             <li>

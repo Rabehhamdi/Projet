@@ -16,7 +16,8 @@ class ModificationActualite extends Component {
             heure_debut: "",
             heure_final: "",
             localisation: "",
-            description: "" 
+            description: "" ,
+            img:""
         }
 
     }
@@ -39,7 +40,8 @@ class ModificationActualite extends Component {
             heure_debut: this.state.heure_debut,
             heure_final: this.state.heure_final,
             localisation: this.state.localisation,
-            description: this.state.description 
+            description: this.state.description ,
+            img: this.state.img
            
         })
             .then(() => this.props.modification({...this.state}))
@@ -47,6 +49,17 @@ class ModificationActualite extends Component {
     }
 
     render() {
+        var id = window.location.pathname
+        var x = 0
+        var ch = ""
+        for (var i = 0; i < id.length; i++) {
+            if (x === 2)
+                ch = ch + id[i]
+            if (x === 3)
+                x++  
+            if (id[i] === "/")
+                x = x + 1
+        }
         return (
             <div style={{ backgroundColor: "#f4f4f4" }}>
                 <Header />
@@ -107,6 +120,14 @@ class ModificationActualite extends Component {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
+                                                    <label class="bmd-label-floating">Image</label>
+                                                    <input type="text" class="form-control" name="img" value={this.state.img} onChange={this.handleChange} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
 
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating"> description</label>
@@ -125,7 +146,7 @@ class ModificationActualite extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        <Link to={`/AdminListeEvenement`}>
+                                        <Link to={`/AdminListeEvenement/${ch}`}>
                                             <button type="submit" onClick={this.a} class="btn btn-primary pull-right" >Modification</button>
                                         </Link> 
                                         <div class="clearfix"></div>

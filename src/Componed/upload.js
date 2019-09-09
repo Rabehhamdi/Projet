@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './upload.css'
+import axios from 'axios'
 export default class ImageUpload extends Component {
     constructor(props) {
         super(props);
@@ -30,18 +31,23 @@ export default class ImageUpload extends Component {
 
         reader.readAsDataURL(file)
     }
-
+    // add = (event) => {
+    //     event.preventDefault();
+    //     return axios.post('/uploadFiles', this.state.file).then(() => { this._handleImageChange(event)})
+    //         .catch((err) => alert(err))
+    // }
     render() {
         let { imagePreviewUrl } = this.state;
         let $imagePreview = null;
         if (imagePreviewUrl) {
             $imagePreview = (<img class="img" src={imagePreviewUrl} />);
         }
-
+        
         return (
             <div>
-                <form onSubmit={this._handleSubmit} action="/upload" enctype="multipart/form-data" method="POST">
-                    <input type="file" class="btn btn-secondary" name="image" onChange={this._handleImageChange} />  
+                <form onSubmit={this._handleSubmit}  enctype="multipart/form-data" method="POST">
+                    <input type="file" class="btn btn-secondary" name="file" onChange={this._handleImageChange} />  
+                    { <button type="submit" /*onClick={this.add}*/>Upload</button> }
                 </form> 
                 {$imagePreview}
             </div>

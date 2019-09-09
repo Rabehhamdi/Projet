@@ -7,7 +7,7 @@ export default class ItemEvenement extends Component {
                 <div class="col-lg-6 col-md-12 col-12">
                     <div class="single-latest-item">
                         <div class="single-latest-image">
-                        <a href="#"><img src={this.props.el.img} alt="" width="236px" height="235px"/></a>
+                        <a href="#"><img src={this.props.el.img ? this.props.el.img : "https://system.na1.netsuite.com/core/media/media.nl?id=3738002&c=589178&h=cd9e47a89ed774871723"} alt="" style={{ height: "80px", weight: "200px" }}/></a>
                         </div>
                         <div class="single-latest-text">
                             <h3><a href="#">{this.props.el.titre}</a></h3>

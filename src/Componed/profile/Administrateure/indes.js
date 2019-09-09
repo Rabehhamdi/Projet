@@ -5,23 +5,34 @@ import Header from '../header'
 import Footer from '../footer'
 import Menu from '../menu'
 class Admin extends Component { 
+    constructor(props) {
+        super(props)
+        this.state = {
+            aboutMe: "",
+            _id:""
+        }        
+    }
+    
     componentDidMount = () => {
         axios.get("/afiicheAboutMe")
-            .then(res => {
+            .then(res => { 
                 this.props.update(res.data)
-
+                this.setState({ aboutMe: res.data[0].aboutMe, _id: res.data[0]._id }) 
             })
     }
     handleChange=(event)=>{
         this.setState({
-            newdata:event.target.value
+            aboutMe:event.target.value
+            
         })
     }
     modifier=(event)=>{
         event.preventDefault();
-        this.props.edit(this.state.newdata)
-    }
-    
+        axios.put(`/ModificationaboutMe/${this.state._id}`, {
+            aboutMe: this.state.aboutMe
+        }).then(() => this.props.edit(this.state.aboutMe ))
+    } 
+
     render() { 
         return (
             <div style={{ backgroundColor: "#f4f4f4" }}>
@@ -36,7 +47,7 @@ class Admin extends Component {
                             <div class="panel-body">
                                 <div class="card-body">
                                     <form>
-                                        
+                                         
                                          
                                         <div class="row">
                                             <div class="col-md-12">
@@ -44,7 +55,9 @@ class Admin extends Component {
                                                     <label>About Me</label>
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating"> </label>
-                                                        <textarea class="form-control" rows="5" name="description" onChange={this.handleChange}>{this.props.data[0].about}</textarea>
+                                                        <textarea class="form-control" rows="5" value={this.state.aboutMe} name="description" onChange={this.handleChange}>
+                                                           
+                                                        </textarea>
                                                         {/* <textarea class="form-control" rows="5" onChange={this.handelchange}  >{this.props.data}</textarea> */}
                                                     </div>
                                                 </div>
@@ -70,10 +83,10 @@ const mapStateToProps = (state) => {
 }
 const MapDispatchToPropos = (dispatch) => {
     return {
-        edit: newAbout => {
+        edit: aboutMe => {
             dispatch({
                 type: "EDIT_ABOUT",
-                newAbout
+                aboutMe
             })
         }, 
         update: (update) => {

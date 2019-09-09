@@ -3,8 +3,8 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import Uploadpdf from '../../uploadpdf'
 class AjouteEmploidetemp extends Component {
-    state={
-        niveaux:""  
+    state={ 
+        pdf:"" 
     }
     // handelchange=(event)=>{
     //     this.setState({
@@ -23,8 +23,8 @@ class AjouteEmploidetemp extends Component {
     }
     add = (event) => {
         event.preventDefault();
-        return (this.state.niveaux.length == 0 && this.state.pdf.length == 0) ? {} 
-            : axios.post('/AjouteEmploidetemp', this.state).then(() => (this.props.Ajoute({ ...this.state }), this.setState({ niveaux: ''  })))
+        return ( this.state.pdf.length == 0  ) ? {} 
+            : axios.post('/AjouteEmploidetemp', this.state).then(() => (this.props.Ajoute({ ...this.state }), this.setState({ niveaux: '',pdf:""  })))
             .catch((err) => alert(err))
     }
     render() {
@@ -37,11 +37,12 @@ class AjouteEmploidetemp extends Component {
                     <div class="panel-body">
                         <div class="card-group">
                             <form>
+                                 
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="bmd-label-floating">niveaux</label>
-                                            <input type="text" class="form-control" name="niveaux" value={this.state.niveaux} onChange={this.handelchange}/>
+                                            <label class="bmd-label-floating">pdf</label>
+                                            <input type="text" class="form-control" name="pdf" value={this.state.pdf} onChange={this.handelchange} />
                                         </div>
                                     </div>
                                 </div>

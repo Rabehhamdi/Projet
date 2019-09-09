@@ -83,7 +83,8 @@ class ListeEntreprise extends Component {
                                         <table class="table">
                                             <thead>
                                                 <tr class="filters">
-                                                    <th><input type="text" class="form-control" placeholder="Image" disabled /></th>
+                                                    <th></th>
+                                                    <th><input type="text" class="form-control" placeholder="cin" disabled /></th>
                                                     <th><input type="text" class="form-control" placeholder="Nom" disabled /></th>
                                                     <th><input type="text" class="form-control" placeholder="Description" disabled /></th>
                                                     <th><input type="text" class="form-control" placeholder="Email" disabled /></th>

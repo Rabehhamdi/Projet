@@ -22,7 +22,7 @@ class Evenement extends Component {
                                 <div className="section-title-wrapper">
                                     <div className="section-title">
                                         <h3>Liste Evenement</h3>
-                                        <p>There are many variations of passages</p>
+                                        <p></p>
                                     </div>
                                 </div>
                             </div>

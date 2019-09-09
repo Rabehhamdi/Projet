@@ -36,7 +36,7 @@ const reducerDepartement = (state = tabDepartement, action) => {
                 state.concat(action.Departement)
             )
         case "REVOME_Departement":
-            return (
+            return ( 
                 state.filter((el, index) => el._id !== action._id)
             )
         case 'UPDATEDepartement':

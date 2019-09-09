@@ -7,7 +7,7 @@ export default class Item_evenement extends Component {
                     <div class="single-event-item">
                         <div class="single-event-image">
                             <a href="#">
-                            <img src={this.props.el.img} alt="" />
+                            <img src={this.props.el.img} alt="" style={{ height: "200px", weight: "50px" }} />
                             <span>{this.props.el.date_debut}</span>
                             </a>
                         </div>

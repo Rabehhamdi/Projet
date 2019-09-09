@@ -24,35 +24,38 @@ import SignUp from './login/creer'
 import Descriptiondepartement from './departement/Description_departement'
 import ModificationActualite from './profile/Administrateure/modificationActualite'
 import ModificationEvenement from './profile/Administrateure/modificationEvenement'
+import ListeDepartement from './profile/Administrateure/ListeDepartement'
 export default class Routes extends Component { 
 
     render() {
         return (
             <div>
                 <Route exact path='/' component={Index} />
-                <Route exact path="/ListeEvenement" component={ListeEvenement} />
+                <Route exact path="/ListeEvenement" component={ListeEvenement}  />
                 <Route exact path="/ItemEvenement/:id" render={(props) => <Item_evenement_description id={props.match.params.id} /> }  />
                 <Route exact path='/Departement' component={Departement} />
                 <Route exact path="/About" component={About} /> 
                 <Route exact path="/Contact" component={Contact} />
-                <Route exact path="/Dashboard" component={Dashboard}/>
-                <Route exact path="/Profile" component={Profile} />
-                <Route exact path="/Matiere" component={Matiere}/>
-                <Route exact path="/Emploi" component={Emploi_de_temp}/>
-                <Route exact path="/Entreprise" component={Entreprise}/>
+                <Route exact path="/Dashboard/:id" render={(props) => <Dashboard id={props.match.params.id} />}/>
+                <Route exact path='/Profile/:id' render={(props) => <Profile _id={props.match.params.id} />} />  
+                <Route exact path='/Matiere/:id' render={(props) => <Matiere _id= { props.match.params.id } />} />  
+                <Route exact path='/Emploi/:id' render={(props) => <Emploi_de_temp _id= { props.match.params.id } />} />  
+                <Route exact path='/Entreprise/:id' render={(props) => <Entreprise _id= { props.match.params.id } />} /> 
                 {/* <Route exact path="/ResponsableEntreprise" component={responsabledeentreprise}/> */}
-                <Route exact path="/Offres" component={Offres} />
-                <Route exact path="/Admin" component={Admin} /> 
-                <Route exact path="/ListeEntreprise" component={ListeEntreprise} />
-                <Route exact path="/AdminListeEvenement" component={AdminListeEvenement} /> 
-                <Route exact path="/ListeEtudiant" component={ListeEtudiant} />
-                <Route exact path="/ListeActualites" component={ListeActualites} />
-                <Route exact path="/ListeEmploidetemp" component={ListeEmploidetemp} />
+                <Route exact path='/Offres/:id' render={(props) => <Offres _id= { props.match.params.id } />} /> 
+                <Route exact path='/Admin/:id' render={(props) => <Admin _id= { props.match.params.id } />} /> 
+                <Route exact path='/ListeEntreprise/:id' render={(props) => <ListeEntreprise _id= { props.match.params.id } />} />
+                <Route exact path='/AdminListeEvenement/:id' render={(props) => < AdminListeEvenement _id= { props.match.params.id } />} />
+                <Route exact path='/ListeDepartement/:id' render={(props) => < ListeDepartement _id={props.match.params.id} />} />
+
+                <Route exact path='/ListeEtudiant/:id' render={(props) => < ListeEtudiant _id={props.match.params.id} />} />
+                <Route exact path='/ListeActualites/:id' render={(props) => < ListeActualites _id={props.match.params.id} />} />
+                <Route exact path='/ListeEmploidetemp/:id' render={(props) => <ListeEmploidetemp _id={props.match.params.id} />} />
                 <Route exact path="/LogIn" component={LogIn} /> 
                 <Route exact path="/SignUp" component={SignUp} /> 
                 <Route exact path="/ItemDepartement/:id" render={(props) => < Descriptiondepartement id={props.match.params.id} />} />
-                <Route exact path='/ModificationActualite/:id' render={(props) => <ModificationActualite _id={props.match.params.id} />} />
-                <Route exact path='/ModificationEvenement/:id' render={(props) => <ModificationEvenement _id={props.match.params.id} />} />
+                <Route exact path='/ModificationActualite/:a/:id' render={(props) => <ModificationActualite _id={props.match.params.id} />} />
+                <Route exact path='/ModificationEvenement/:z/:id' render={(props) => <ModificationEvenement _id={props.match.params.id} />} />
             </div>
         )
     }

@@ -53,7 +53,7 @@ export default class Index extends Component {
                 <Evenement />
                 <Facts />
                 <Departement />
-                <Milleur />
+                {/* <Milleur /> */}
                 <Footer />
             </div>
         )

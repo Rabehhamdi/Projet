@@ -10,6 +10,15 @@ class ItemActualite extends Component {
             .catch((err)=>alert(err))
     }
     render() {
+        var id = window.location.pathname
+        var x = 0
+        var ch = ""
+        for (var i = 0; i < id.length-1; i++) {
+            if (x === 2)
+                ch = ch + id[i]
+            if (id[i] === "/")
+                x = x + 1
+        }
         return (
             <tr>
                 <td><img src={this.props.el.img} style={{ height: "50px", weight: "50px" }} /></td>
@@ -17,7 +26,7 @@ class ItemActualite extends Component {
                 <td>{this.props.el.description}</td>
                 <td>{this.props.el.date}</td>  
                 <td> 
-                    <Link to={`/ModificationActualite/${this.props.el._id}`}>
+                    <Link to={`/ModificationActualite/${ch}/${this.props.el._id}`}>
                         <a href="#" className="btn btn-primary">Modification</a>
                     </Link>
                     <button type="button" onClick={this.delete} class="btn btn-danger">Supprimer</button>

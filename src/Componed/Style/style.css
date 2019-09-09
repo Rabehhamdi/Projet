@@ -1042,6 +1042,11 @@ body {
     position: relative;
     text-align: center;
     top: -35px;
+    height: 200px
+}
+.overlay-effect a {position: relative}
+.single-item-text {
+    height: 170px
 }
 .overlay-effect a {position: relative}
 .overlay-effect a:before {

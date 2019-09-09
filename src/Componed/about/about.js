@@ -40,7 +40,7 @@ class About extends Component {
                                 <div class="section-title-wrapper">
                                     <div class="section-title">
                                         <h3>Who we are</h3>
-                                        <p>There are many variations of passages</p>
+                                        <p> </p>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@ class About extends Component {
                             <div class="col-lg-6 col-md-12 col-12">
                                 <div class="about-text-container">
                                     <span>Well come to Educat</span> 
-                                    <p>{data[0].about}</p>
+                                    <h4>{data[0].aboutMe}</h4>
                                 </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-12">

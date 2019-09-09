@@ -21,7 +21,7 @@ var today = dd + '/' + mm + '/' + yyyy;
  
     
 class Offres extends Component {
-     
+    
     state = {
         offre: "",
         titre: "", 
@@ -37,13 +37,32 @@ class Offres extends Component {
     }
     add = (event) => { 
         event.preventDefault();
+        var id = window.location.pathname
+        var x = 0
+        var ch = ""
+        for (var i = 0; i < id.length; i++) {
+            if (x === 2)
+                ch = ch + id[i]
+            if (id[i] === "/")
+                x = x + 1
+        }
+         
         return (this.state.offre.length == 0 && this.state.titre.length == 0 && this.state.description.length == 0) ? {} 
-            : axios.post('/ajouteOffre', this.state).then(() => (this.props.Ajoute({ ...this.state  }), this.setState({ offre: '', titre: '', description: '' })))
+            : axios.post('/ajouteOffre', {...this.state ,"id_user":ch }).then(() => (this.props.Ajoute({ ...this.state  }), this.setState({ offre: '', titre: '', description: '' })))
                 .catch((err) => alert(err))
  
     }
     componentDidMount = () => {
-        axios.get("/OffreDeEntreprise")
+        var id = window.location.pathname
+        var x = 0
+        var ch = ""
+        for (var i = 0; i < id.length; i++) {
+            if (x === 2)
+                ch = ch + id[i]
+            if (id[i] === "/")
+                x = x + 1
+        }
+        axios.get(`/OffreDeEntreprise/${ch}` )
             .then(res => {
                 this.props.update(res.data)
 

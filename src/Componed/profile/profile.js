@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
+import {connect }from 'react-redux'
+import axios from 'axios'
 import Header from './header'
 import Footer from './footer'
 import Menu from './menu'
-export default class componentName extends Component {
+class componentName extends Component {
+    componentDidMount = () => {
+        axios.get(`/AffProfile/${this.props._id}`)
+            .then(res => {
+                this.props.update(res.data)
+
+            })
+    }
     render() {
+        const { user } = this.props
         return (
             
             <div style={{ backgroundColor: "#f4f4f4" }}>
@@ -23,17 +33,20 @@ export default class componentName extends Component {
                                 <div class="card-body">
                                     <form>
                                         <div class="row">
-                                            
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label class="bmd-label-floating">Username</label>
-                                                        <input type="text" class="form-control"/>
-                                                    </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">CIN</label>
+                                                    <input type="text" value={user.cin} class="form-control" />
                                                 </div>
-                                                    <div class="col-md-6">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            
+                                                 
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label class="bmd-label-floating">Email address</label>
-                                                            <input type="email" class="form-control"/>
+                                                            <input type="email" value={user.email} class="form-control"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -41,41 +54,27 @@ export default class componentName extends Component {
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Fist Name</label>
-                                                                <input type="text" class="form-control"/>
+                                                            <input type="text" value={user.Fist_Name} class="form-control"/>
                                                             </div>
                                                         </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Last Name</label>
-                                                                    <input type="text" class="form-control"/>
+                                                            <input type="text" value={user.Last_Name} class="form-control"/>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-md-12">
+                                                            <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Adress</label>
-                                                                    <input type="text" class="form-control"/>
+                                                            <input type="text" value={user.Adress} class="form-control"/>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label class="bmd-label-floating">City</label>
-                                                                    <input type="text" class="form-control"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label class="bmd-label-floating">Country</label>
-                                                                    <input type="text" class="form-control"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
+                                                            </div>   
+                                                            <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">Postal Code</label>
-                                                                    <input type="text" class="form-control"/>
+                                                            <input type="text" value={user.PostalCode} class="form-control"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -84,8 +83,7 @@ export default class componentName extends Component {
                                                                 <div class="form-group">
                                                                     <label>About Me</label>
                                                                     <div class="form-group">
-                                                                        <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                                                        <textarea class="form-control" rows="5"></textarea>
+                                                                <textarea class="form-control" value={user.About_Me} rows="5"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -104,12 +102,14 @@ export default class componentName extends Component {
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                                    <h4 class="card-title">Alec Thompson</h4>
+                                            
+                                            <h6 class="card-category text-gray">{user.role === "2" ? <div>Etudiant</div> : null} {user.role === "1" ? <div>Responsable d'entreprise</div> : null}  {user.role === "0" ? <div>Administrateur</div> : null} </h6>
+                                            
+                                            <h4 class="card-title">{user.cin}</h4>
                                     <p class="card-description">
-                                        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                                                {user.About_Me}
                                     </p>
-                                    <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+                                            <h3> {user.email} </h3> 
                                 </div>
                             </div>
                         </div>
@@ -122,3 +122,20 @@ export default class componentName extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
+const mapdispatchToProps = dispatch => {
+    return {
+        update: (update) => {
+            dispatch({
+                type: 'UPDATEUser',
+                update
+            })
+        }
+    }
+}
+export default connect(mapStateToProps, mapdispatchToProps)(componentName)

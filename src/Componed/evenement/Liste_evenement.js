@@ -42,16 +42,7 @@ class Liste_Evenement extends Component {
                             <div class="row">
                                     {dataEvenement.map((el, index) =>  <Item_evenement el={el} key={index} />)} 
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="pagination-content">
-                                        <ul class="pagination">
-                                            <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
-                                            <li class="current"><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                          
                         </div>
                     </div> 
                 </div>    

@@ -10,6 +10,7 @@ import ReducerListeOffres from './ReducerListeOffres'
 import reducerYourEmploit from './ReducerYourEmploideTemp'
 import reducerMatiere from './ReducerMatiere'
 import ReducerDepartement from './ReducerDepartement'
+import user from './user'
 export default combineReducers({ reducerEvenement,
     reducerEntreprise,
     reducerEtudiant,
@@ -20,4 +21,5 @@ export default combineReducers({ reducerEvenement,
     ReducerListeOffres,
     reducerYourEmploit,
     reducerMatiere,
-    ReducerDepartement})
+    ReducerDepartement,
+    user})

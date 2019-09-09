@@ -10,7 +10,8 @@ class AjouteEvenet extends Component {
         heure_debut:"",
         heure_final:"",
         localisation:"",
-        description:""
+        description:"",
+        img:""
     }
     handleChange=(event)=>
     {
@@ -22,8 +23,8 @@ class AjouteEvenet extends Component {
     add=(event)=>
     { 
         event.preventDefault();
-        return (this.state.titre.length == 0 && this.state.date_debut.length == 0 && this.state.date_finale.length == 0 && this.state.heure_debut.length == 0 && this.state.heure_final.length == 0 && this.state.localisation.length == 0 && this.state.description.length == 0) ? {} 
-            : axios.post('/ajouteEvenement', this.state).then(()=>(this.props.Ajoute({ ...this.state }) ,this.setState({ titre: '', date_debut: '', date_finale: '', heure_debut: '', heure_final: '', localisation: '', description: '' })))
+        return (this.state.img.length == 0 &&this.state.titre.length == 0 && this.state.date_debut.length == 0 && this.state.date_finale.length == 0 && this.state.heure_debut.length == 0 && this.state.heure_final.length == 0 && this.state.localisation.length == 0 && this.state.description.length == 0) ? {} 
+            : axios.post('/ajouteEvenement', this.state).then(()=>(this.props.Ajoute({ ...this.state }) ,this.setState({ titre: '', date_debut: '', date_finale: '', heure_debut: '', heure_final: '', localisation: '', description: '',img:"" })))
          .catch((err)=>alert(err))
     }
     // ajout = () => {
@@ -81,6 +82,14 @@ class AjouteEvenet extends Component {
                                         <div class="form-group">
                                             <label class="bmd-label-floating">localisation</label>
                                             <input type="text" class="form-control" name="localisation" value={this.state.localisation} onChange={this.handleChange}/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Image</label>
+                                            <input type="text" class="form-control" name="img" value={this.state.img} onChange={this.handleChange} />
                                         </div>
                                     </div>
                                 </div>

@@ -34,8 +34,17 @@ class ModificationActualite extends Component {
             .then(() => this.props.modification(this.state))
 
     }
-
+ 
     render() {
+        var id = window.location.pathname
+        var x = 0
+        var ch = ""
+        for (var i = 0; i < id.length; i++) {
+            if (x === 2)
+                ch = ch + id[i]
+            if (id[i] === "/")
+                x = x + 1
+        }
         return (
             <div style={{ backgroundColor: "#f4f4f4" }}>
                 <Header />
@@ -80,7 +89,7 @@ class ModificationActualite extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                        <Link to={`/ListeActualites`}> 
+                                        <Link to={`/ListeActualites/${ch}`}> 
                                             <button type="submit" onClick={this.a} class="btn btn-primary pull-right" >Modification</button>
                                         </Link> 
                                             <div class="clearfix"></div>

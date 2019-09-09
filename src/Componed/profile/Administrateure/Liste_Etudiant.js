@@ -83,7 +83,8 @@ class ListeEtudiant extends Component {
                                         <table class="table">
                                             <thead>
                                                 <tr class="filters">
-                                                    <th> </th> 
+                                                    <th> </th>
+                                                    <th><input type="text" class="form-control" placeholder="cin" disabled /></th> 
                                                     <th><input type="text" class="form-control" placeholder="nom" disabled /></th>
                                                     <th><input type="text" class="form-control" placeholder="prenom" disabled /></th>
                                                     <th><input type="text" class="form-control" placeholder="Email" disabled /></th>
@@ -97,6 +98,7 @@ class ListeEtudiant extends Component {
                                             </thead>
                                             <tfoot>
                                                 <tr>
+                                                    <th>Cin</th>
                                                     <th>Image</th>
                                                     <th>nom</th>
                                                     <th>prenom</th>

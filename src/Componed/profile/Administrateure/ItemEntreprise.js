@@ -12,6 +12,7 @@ class ItemEntreprise extends Component {
         return (
             <tr>
                 <td><img src={this.props.el.img} style={{height:"50px", weight:"50px" }}/></td>
+                <td>{this.props.el.cin}</td>
                 <td>{this.props.el.Nom }</td>
                 <td>{this.props.el.Description }</td>
                 <td>{this.props.el.Email  }</td>

@@ -5,7 +5,7 @@ import ItemOffre from './item_Offre'
 
 class ListeOffre extends Component {
     componentDidMount = () => {
-        axios.get("/OffreDeEntreprise")
+        axios.get("/afiicheOffres")
             .then(res => {
                 this.props.update(res.data)
 
